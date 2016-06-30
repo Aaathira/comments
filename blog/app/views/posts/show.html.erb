@@ -15,6 +15,7 @@
   <%= @post.content %>
 </p>
 <h2>Comments</h2>
+<%= @post.comments.any? ? pluralize(@post.comments.size, "comment") : "No comments yet!!" %>
 <%= render @post.comments %>
  
 <h2>Add a comment:</h2>
