@@ -3,6 +3,7 @@ get 'home/index'
 root :to => "home#index"
 resources:posts do
 resources:comments
+resources:likes
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

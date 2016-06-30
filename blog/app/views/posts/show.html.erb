@@ -14,11 +14,19 @@
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
+<h2>Likes</h2>
+<%= @post.likes.any? ? pluralize(@post.likes.size, "like") : "No likes yet!!" %>
+<h2>Do u want to like this post?</h2>
+<%= form_for([@post, @post.likes.build]) do |f| %>
+  <div class="actions">
+    <%= f.submit "Like" %>
+  </div>
+<% end %>
 <h2>Comments</h2>
 <%= @post.comments.any? ? pluralize(@post.comments.size, "comment") : "No comments yet!!" %>
 <%= render @post.comments %>
  
-<h2>Add a comment:</h2>
+<h2>Do u want to comment?</h2>
 <%= render "comments/form" %>
  
 <br />
