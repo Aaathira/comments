@@ -22,6 +22,14 @@
     <%= f.submit "Like" %>
   </div>
 <% end %>
+<h2>DisLikes</h2>
+<%= @post.unlikes.any? ? pluralize(@post.unlikes.size, "dislike") : "No dislikes yet!!" %>
+<h2>Do u want to dislike this post?</h2>
+<%= form_for([@post, @post.unlikes.build]) do |f| %>
+  <div class="actions">
+    <%= f.submit "UnLike" %>
+  </div>
+<% end %>
 <h2>Comments</h2>
 <%= @post.comments.any? ? pluralize(@post.comments.size, "comment") : "No comments yet!!" %>
 <%= render @post.comments %>

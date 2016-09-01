@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-get 'home/index'
-root :to => "home#index"
-resources:posts do
-resources:comments
-resources:likes
-resources:unlikes
-end
-
+  devise_for :users
+get 'pages/new_idea'
+get 'pages/view_theme'
+get 'pages/view_ap_idea'
+get 'pages/view_ap_theme'
+get 'pages/index_student'
+get 'pages/post_solution'
+get 'pages/edit_idea'
+get 'pages/index_tcser'
+get 'pages/review_idea'
+get 'pages/review_theme'
+get 'pages/post_theme'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -61,4 +65,6 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+#root "pages#home", page: "home"
+root 'pages#index_student'
 end
