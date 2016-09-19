@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Innovations Corner</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="app/assets/stylesheets/business-frontpage.css" rel="stylesheet">
+
+</head>
+
+<body>
+    	<div id="bg">
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="tagline">Innovations Corner</h1>
+			<%= link_to 'Back', :back, class: "btn btn-default pull-right 
+                                             glyphicon glyphicon-arrow-left" %>
+			<a href="index_student.html">
+			<button type="button" class="btn btn-default pull-right">
+			      <span class="glyphicon glyphicon-home"> Home</span>
+			</button>
+			</a>
+                </div>
+	 </div>
+        </div>
+	</div>
+<div class="row">
+<div class="col-lg-offset-2 col-lg-8 col-lg-offset-2 ">
+<div id="form1">
+
+  <label for="iname">Email: </label>
+  <%= User.find(@idea.user_id).email.to_s %><br>
+  <label for="iname">Idea Title: </label>
+  <%= @idea.title %><br>
+  <label for="iname">Category:</label>
+  <%= Category.find(@idea.category_id).name.to_s %><br>
+  <label for="iname">Idea Description: </label>
+  <%= @idea.description %><br>
+  <label for="iname">Status:</label>
+  <%= @idea.status %><br>
+  <% if current_user.email.start_with?("tcs") && @idea.status != 'Approved'%>
+    <label for="iname">Update Status as:</label>
+    <%= form_for @idea do |f| %>
+      <%= f.select(:status) do %>
+        <% ['Approved','Need Clarification','Rejected'].each do |status| %>
+          <%= content_tag(:option, status, value: status) %>
+        <% end %>
+      <% end %>
+      <%= f.submit 'Go' %>
+    <% end %>
+  <% else %>
+    <% if @idea.status == 'Need Clarification' %> 
+      <%= form_for @idea do |f| %>
+        <%= f.label :description , 'Description' %><br>
+        <%= f.text_area :description %>
+      
+        <%= f.submit 'Edit' %>
+      <% end %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+    
+
+

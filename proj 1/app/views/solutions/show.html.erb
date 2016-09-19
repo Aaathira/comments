@@ -35,29 +35,33 @@
 	 </div>
         </div>
 	</div>
-<div class="container">
-  <h3>Approved Ideas are..</h3>           
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Idea Title</th>
-        <th>Category</th>
-	<th>Action</th>
+<div class="row">
+<div class="col-lg-offset-2 col-lg-8 col-lg-offset-2 ">
+<div id="form1">
 
-      </tr>
-    </thead>
-    <tbody>
-      <% @idea_approved.each do |idea| %>
-        <tr>
-	  <td><%= idea.title %></td>        
-	  <td><%= Category.find(idea.category_id).name.to_s %></td>
-          <td><%= idea.status %></td>
-          <td><%= link_to 'View', idea %></a></td>
-        </tr>
+  <label for="iname">Email: </label>
+  <%= User.find(@solution.user_id).email.to_s %><br>
+  <label for="iname">Theme: </label>
+  <%= @solution.theme.problem %><br>
+  <label for="iname">Solution:</label>
+  <%= @solution.solution %><br>
+  <label for="iname">Status:</label>
+  <%= @solution.status %><br>
+  <% if current_user.email.start_with?("tcs") && @solution.status != 'Approved' %>
+    <label for="iname">Update Status as:</label>
+    <%= form_for @solution do |f| %>
+      <%= f.select(:status) do %>
+        <% ['Approved','Rejected'].each do |status| %>
+          <%= content_tag(:option, status, value: status) %>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
-
+      <%= f.submit 'Go' %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+</div>
+</div>
 </body>
 </html>
 

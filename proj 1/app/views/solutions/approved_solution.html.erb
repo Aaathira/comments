@@ -36,23 +36,22 @@
         </div>
 	</div>
 <div class="container">
-  <h3>Approved Ideas are..</h3>           
+  <h3>Approved Solutions are..</h3>           
   <table class="table">
     <thead>
       <tr>
-        <th>Idea Title</th>
-        <th>Category</th>
+        <th>Theme</th>
+        <th>Solution</th>
 	<th>Action</th>
 
       </tr>
     </thead>
     <tbody>
-      <% @idea_approved.each do |idea| %>
+      <% @solution_approved.each do |solution| %>
         <tr>
-	  <td><%= idea.title %></td>        
-	  <td><%= Category.find(idea.category_id).name.to_s %></td>
-          <td><%= idea.status %></td>
-          <td><%= link_to 'View', idea %></a></td>
+	  <td><%= Theme.find(solution.theme_id).problem.to_s %></td>       
+	  <td><%= solution.solution %></td>
+          <td><%= link_to 'View', solution %></a></td>
         </tr>
       <% end %>
     </tbody>

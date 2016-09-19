@@ -57,8 +57,8 @@
 				<p><h3>Review Ideas?</h3></p>
         				<div class="overlay">
            					<h2>Review</h2>
-           					<a class="info" href="/pages/review_idea">Ideas</a>
-						<a class="info" href="/pages/review_theme">Themes</a>
+           					<%= link_to 'Ideas', pages_show_path, class: "info" %>
+						<%= link_to 'Solutions', solutions_index_path, class: "info" %>
        					</div>
     			</div>
             </div>
@@ -68,7 +68,8 @@
 				<p><h3>Post a new Theme?</h3></p>
         				<div class="overlay">
            					<h2>Theme Gallery</h2>
-           					<a class="info" href="/pages/post_theme">Click!!</a>
+           					<a class="info" href="/themes/new">Post a theme</a>
+                                                <a class="info" href="/categories/new">Add a category</a>
        					</div>
     			</div>
             </div>
@@ -78,8 +79,8 @@
 				<p><h3>View Approved Ideas?</h3></p>
         				<div class="overlay">
            					<h2>View Approved Idea</h2>
-           					<a class="info" href="/pages/view_ap_idea">Ideas</a>
-						<a class="info" href="/pages/view_ap_theme">Themes</a>
+           					<a class="info" href="/pages/approved_idea">Ideas</a>
+						<a class="info" href="/solutions/approved_solution">Themes</a>
        					</div>
     			</div>
             </div>

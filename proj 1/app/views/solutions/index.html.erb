@@ -24,9 +24,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="tagline">Innovations Corner</h1>
-			<%= link_to 'Back', :back, class: "btn btn-default pull-right 
-                                             glyphicon glyphicon-arrow-left" %>
-			<a href="index_student.html">
+			<a href="/pages/index_tcser">
+			<button type="button" class="btn btn-default pull-right">
+			      <span class="glyphicon glyphicon-arrow-left">Back</span>
+			</button>
+			</a>
+			<a href="/pages/index_tcser">
 			<button type="button" class="btn btn-default pull-right">
 			      <span class="glyphicon glyphicon-home"> Home</span>
 			</button>
@@ -36,23 +39,23 @@
         </div>
 	</div>
 <div class="container">
-  <h3>Approved Ideas are..</h3>           
+  <h3>Solutions to be Reviewed..</h3>           
   <table class="table">
     <thead>
       <tr>
-        <th>Idea Title</th>
-        <th>Category</th>
+        <th>Theme</th>
+        <th>Solution</th>
+        <th>Status</th>
 	<th>Action</th>
-
       </tr>
     </thead>
     <tbody>
-      <% @idea_approved.each do |idea| %>
+      <% @solution.each do |solution| %>
         <tr>
-	  <td><%= idea.title %></td>        
-	  <td><%= Category.find(idea.category_id).name.to_s %></td>
-          <td><%= idea.status %></td>
-          <td><%= link_to 'View', idea %></a></td>
+	  <td><%= solution.theme.problem %></td> 
+	  <td><%= solution.solution %></td>       
+          <td><%= solution.status %></td>
+          <td><%= link_to 'Review', solution %></a></td>
         </tr>
       <% end %>
     </tbody>
